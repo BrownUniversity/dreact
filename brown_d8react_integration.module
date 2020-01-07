@@ -1,0 +1,48 @@
+<?php
+/**
+ * @file
+ * Contains brown_d8react_integration.module.
+ * @author James Morton <james_morton@brown.edu>
+ */
+
+/**
+ * App List Function
+ * Return list of react apps based on contents of /apps directory
+ *
+ * @return array
+ *   An array of possible key and value options.
+ *
+ * @see options_allowed_values()
+ */
+function brown_d8react_integration_available_react_apps() {
+    $current_path =  drupal_get_path('module', 'brown_d8react_integration');
+    $apps = array_diff(scandir($current_path.'/apps'), array('..', '.'));
+    $options = [];
+    foreach ($apps as $app) {
+        $appName = pathinfo($current_path.'/apps/'.$app, PATHINFO_FILENAME);
+        $appNameNice = ucwords(str_replace("-", " ", $appName));
+        $options[$appName] = $appNameNice;
+    }
+    return $options;
+}
+
+/**
+ * Theme Integration
+ * Add paragraph type template to display the chosen react app
+ *
+ * Implements hook_theme().
+ *
+ * @return array
+ *   Location of template and base hook to see if the template should be used
+ */
+function brown_d8react_integration_theme() {
+    return array(
+    'paragraph__react_app' => array(
+        'template' => 'paragraph--brown-d8react-integration',
+        'base hook' => 'paragraph'
+    ),
+);
+
+}
+
+

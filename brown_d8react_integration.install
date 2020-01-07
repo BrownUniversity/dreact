@@ -1,0 +1,98 @@
+<?php
+/**
+ * @file
+ * Installation functions for Brown D8 React Integration module.
+ * @author James Morton <james_morton@brown.edu>
+ */
+
+/**
+ * Installation Function
+ * Implements hook_install().
+ *
+ * Add react app paragraph type to basic page content components
+ */
+function brown_d8react_config_import_steps_alter(&$sync_steps, \Drupal\Core\Config\ConfigImporter $config_importer) {
+    $sync_steps[] = 'brown_d8react_additional_configuration_step';
+}
+
+function brown_d8react_additional_configuration_step(&$context) {
+    $config_factory = \Drupal::configFactory();
+    $config = $config_factory->getEditable('field.field.node.basic_page.field_content_components');
+
+    $dependencies = $config->getOriginal('dependencies.config');
+    $bundles = $config->getOriginal('settings.handler_settings.target_bundles');
+    $drag_drop = $config->getOriginal('settings.handler_settings.target_bundles_drag_drop');
+
+    $dependencies[] = 'paragraphs.paragraphs_type.react_app';
+    $config->set('dependencies.config', $dependencies)->save();
+
+    $bundles['react_app'] = 'react_app';
+    $config->set('settings.handler_settings.target_bundles', $bundles)->save();
+
+    $drag_drop['react_app'] = array(
+            'enabled' => true,
+            'weight' => 192
+        );
+    $config->set('settings.handler_settings.target_bundles_drag_drop', $drag_drop)->save();
+    $context['finished'] = 1;
+}
+
+/**
+ * Uninstallation Function
+ * Implements hook_uninstall().
+ *
+ * Remove react app paragraph type to basic page content components
+ */
+function brown_d8react_integration_uninstall() {
+    $config_factory = \Drupal::configFactory();
+
+    $config_factory->getEditable('core.entity_form_display.paragraph.react_app.default')->delete();
+    $config_factory->getEditable('core.entity_view_display.paragraph.react_app.default')->delete();
+    $config_factory->getEditable('field.field.paragraph.react_app.field_react_apps')->delete();
+    $config_factory->getEditable('field.storage.paragraph.field_react_apps')->delete();
+    $config_factory->getEditable('paragraphs.paragraphs_type.react_app')->delete();
+
+    $config = $config_factory->getEditable('field.field.node.basic_page.field_content_components');
+
+    $dependencies = $config->getOriginal('dependencies.config');
+    $bundles = $config->getOriginal('settings.handler_settings.target_bundles');
+    $drag_drop = $config->getOriginal('settings.handler_settings.target_bundles_drag_drop');
+
+    $index = array_search('paragraphs.paragraphs_type.react_app', $dependencies);
+    unset($dependencies[$index]);
+    $config->set('dependencies.config', $dependencies)->save();
+
+    unset($bundles['react_app']);
+    $config->set('settings.handler_settings.target_bundles', $bundles)->save();
+
+    unset($drag_drop['react_app']);
+    $config->set('settings.handler_settings.target_bundles_drag_drop', $drag_drop)->save();
+
+    removeReactAppNodes();
+}
+
+/**
+ * Delete all node that contain React Apps
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function removeReactAppNodes() {
+    $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple();
+    foreach ($nodes as $node) {
+        foreach ($node->getFields() as $key => $field) {
+            $field_type = $field->getFieldDefinition()->getType();
+            $field_settings = $field->getSettings();
+            if ($field_type == 'entity_reference_revisions' && $field_settings['target_type'] === 'paragraph') {
+                foreach ($field as $item) {
+                    if ($item->entity instanceof \Drupal\paragraphs\ParagraphInterface) {
+                        if ($item->entity->getType() === 'react_app') {
+                            $node->delete();
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

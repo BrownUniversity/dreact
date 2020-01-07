@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_react_apps
+    - paragraphs.paragraphs_type.react_app
+    - field.field.node.basic_page.field_content_components
+  module:
+    - paragraphs
+    - options
+id: paragraph.react_app.field_react_apps
+field_name: field_react_apps
+entity_type: paragraph
+bundle: react_app
+label: 'React Apps'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

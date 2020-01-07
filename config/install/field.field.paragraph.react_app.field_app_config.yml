@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_app_config
+    - paragraphs.paragraphs_type.react_app
+    - field.field.node.basic_page.field_content_components
+  module:
+    - paragraphs
+id: paragraph.react_app.field_app_config
+field_name: field_app_config
+entity_type: paragraph
+bundle: react_app
+label: 'App Config'
+description: 'React application configuration. JSON format.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

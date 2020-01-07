@@ -1,0 +1,8 @@
+<div {{ attributes.setAttribute("id", content.field_react_apps['#items'].0.value) }}></div>
+<script>window.drupalCtx = {{content.field_app_config["#items"].0.value|json_encode|raw}}</script>
+{% set currentUser = {
+  username: user.displayname,
+  roles: user.getroles(TRUE)
+} %}
+<script>window.currentUser = {{currentUser|json_encode|raw}}</script>
+<script src={{"/modules/custom/brown-d8react-integration/apps/" ~ content.field_react_apps['#items'].0.value ~ ".js" }}></script>

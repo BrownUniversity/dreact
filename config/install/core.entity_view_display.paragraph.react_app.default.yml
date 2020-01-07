@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.react_app.field_app_config
+    - field.field.paragraph.react_app.field_react_apps
+    - paragraphs.paragraphs_type.react_app
+  module:
+    - paragraphs    
+    - options
+id: paragraph.react_app.default
+targetEntityType: paragraph
+bundle: react_app
+mode: default
+content:
+  field_app_config:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_react_apps:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+hidden: {  }

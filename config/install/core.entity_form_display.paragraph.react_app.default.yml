@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.react_app.field_app_config
+    - field.field.paragraph.react_app.field_react_apps
+    - paragraphs.paragraphs_type.react_app
+  module:
+    - paragraphs
+id: paragraph.react_app.default
+targetEntityType: paragraph
+bundle: react_app
+mode: default
+content:
+  field_app_config:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_react_apps:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true
