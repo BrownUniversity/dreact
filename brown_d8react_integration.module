@@ -4,6 +4,10 @@
  * Contains brown_d8react_integration.module.
  * @author James Morton <james_morton@brown.edu>
  */
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Access\AccessResult;
 
 /**
  * App List Function
@@ -20,6 +24,9 @@ function brown_d8react_integration_available_react_apps() {
     $options = [];
     foreach ($apps as $app) {
         $appName = pathinfo($current_path.'/apps/'.$app, PATHINFO_FILENAME);
+        if ($appName === "sitewide") {
+          continue;
+        }
         $appNameNice = ucwords(str_replace("-", " ", $appName));
         $options[$appName] = $appNameNice;
     }
@@ -41,8 +48,26 @@ function brown_d8react_integration_theme() {
         'template' => 'paragraph--brown-d8react-integration',
         'base hook' => 'paragraph'
     ),
-);
-
+  );
 }
 
+function brown_d8react_integration_page_attachments(array &$page) {
+  $canOnlyEditConfig = false;
+  $user = \Drupal::currentUser();
 
+  if ($user->hasPermission('edit react app config') && !$user->hasPermission('insert react micro-app')) {
+    $canOnlyEditConfig = true;
+  }
+
+  if (\Drupal::service('router.admin_context')->isAdminRoute()) {
+    $page['#attached']['library'][] = 'brown_d8react_integration/dreact_permissions';
+    $page['#attached']['drupalSettings']['brown_d8react_integration']['dreact_permissions']['canOnlyEditConfig'] = $canOnlyEditConfig;
+  }
+
+  $config = \Drupal::config('brown_d8react_integration.adminsettings');
+  if (!\Drupal::service('router.admin_context')->isAdminRoute()) {
+    if($config->get('sitewide_app') !== 'none') {
+      $page['#attached']['library'][] = 'brown_d8react_integration/'.$config->get('sitewide_app');
+    }
+  }
+}

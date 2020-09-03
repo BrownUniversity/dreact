@@ -1,7 +1,10 @@
 {
-  "name": "brownuniversity/d8react-integration",
+  "name": "webserv/brown-d8react-integration",
   "description": "Manages react apps for insertion into sites.",
   "type": "drupal-custom-module",
-  "homepage": "https://github.com/brownuniversity/d8react-integration",
-  "minimum-stability": "dev"
+  "homepage": "https://bitbucket.org/webserv/brown-d8react-integration",
+  "minimum-stability": "dev",
+  "require": {
+    "symfony/yaml": "^3.2.8"
+  }
 }

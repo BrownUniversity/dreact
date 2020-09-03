@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - brown_d8react_integration
+    - paragraphs
+id: paragraph.field_dreact_app_config
+field_name: field_dreact_app_config
+entity_type: paragraph
+type: brown_d8react_integration_keyvalue
+settings: {  }
+module: brown_d8react_integration
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

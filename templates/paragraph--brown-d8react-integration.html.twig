@@ -1,8 +1,20 @@
 <div {{ attributes.setAttribute("id", content.field_react_apps['#items'].0.value) }}></div>
-<script>window.drupalCtx = {{content.field_app_config["#items"].0.value|json_encode|raw}}</script>
-{% set currentUser = {
-  username: user.displayname,
-  roles: user.getroles(TRUE)
-} %}
+{% if content.field_dreact_app_config[0]['#markup'] %}
+  <script>
+    window.drupalCtx = {{ content.field_dreact_app_config[0]['#markup']|json_encode|raw }}
+  </script>
+{% else %}
+  <script>window.drupalCtx = {{content.field_app_config["#items"].0.value|json_encode|raw}}</script>
+{% endif %}
+
+{% if 'On' in content.field_pass_user_data[0] %}
+{%
+  set currentUser = {
+    username: user.displayname,
+    roles: user.getroles(TRUE)
+  }
+%}
 <script>window.currentUser = {{currentUser|json_encode|raw}}</script>
+{% endif %}
+
 <script src={{"/modules/custom/brown-d8react-integration/apps/" ~ content.field_react_apps['#items'].0.value ~ ".js" }}></script>

@@ -1,0 +1,6 @@
+brown_d8react_integration.admin_settings_form:
+  title: 'Brown DReact'
+  description: 'Site-wide DReact config'
+  parent: system.admin_config_services
+  route_name: brown_d8react_integration.admin_settings_form
+  weight: 100

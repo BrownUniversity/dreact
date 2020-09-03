@@ -1,10 +1,6 @@
 langcode: en
 status: true
-dependencies: 
-  config:
-    - field.field.node.basic_page.field_content_components
-  module:
-    - paragraphs
+dependencies: {  }
 id: react_app
 label: 'React App'
 icon_uuid: null

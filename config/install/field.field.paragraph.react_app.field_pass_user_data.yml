@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pass_user_data
+    - paragraphs.paragraphs_type.react_app
+id: paragraph.react_app.field_pass_user_data
+field_name: field_pass_user_data
+entity_type: paragraph
+bundle: react_app
+label: 'Pass User Data'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

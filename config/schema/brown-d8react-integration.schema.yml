@@ -1,0 +1,10 @@
+field.field_settings.brown_d8react_integration_keyvalue:
+  type: mapping
+  label: 'KeyValue settings'
+  mapping:
+    key:
+      type: string
+      label: 'Key'
+    value:
+      type: string
+      label: 'Value'

@@ -5,6 +5,9 @@
  * @author James Morton <james_morton@brown.edu>
  */
 
+use \Drupal\Core\Config\FileStorage;
+use Symfony\Component\Yaml\Yaml;
+
 /**
  * Installation Function
  * Implements hook_install().
@@ -96,3 +99,4 @@ function removeReactAppNodes() {
         }
     }
 }
+

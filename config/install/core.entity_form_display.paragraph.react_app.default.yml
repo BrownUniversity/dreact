@@ -3,10 +3,12 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.react_app.field_app_config
+    - field.field.paragraph.react_app.field_dreact_app_config
+    - field.field.paragraph.react_app.field_pass_user_data
     - field.field.paragraph.react_app.field_react_apps
     - paragraphs.paragraphs_type.react_app
   module:
-    - paragraphs
+    - brown_d8react_integration
 id: paragraph.react_app.default
 targetEntityType: paragraph
 bundle: react_app
@@ -19,6 +21,19 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
+  field_dreact_app_config:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: brown_d8react_integration_keyvalue_widget
+    region: content
+  field_pass_user_data:
+    weight: 3
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
   field_react_apps:
     weight: 0

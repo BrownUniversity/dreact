@@ -10,7 +10,7 @@ entity_type: paragraph
 type: list_string
 settings:
   allowed_values: {  }
-  allowed_values_function: 'brown_d8react_integration_available_react_apps'
+  allowed_values_function: brown_d8react_integration_available_react_apps
 module: options
 locked: false
 cardinality: 1
