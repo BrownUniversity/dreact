@@ -1,4 +1,4 @@
-<div {{ attributes.setAttribute("id", content.field_react_apps['#items'].0.value) }}></div>
+<div {{ attributes.setAttribute("class", content.field_react_apps['#items'].0.value) }}></div>
 {% if content.field_dreact_app_config[0]['#markup'] %}
   <script>
     window.drupalCtx = {{ content.field_dreact_app_config[0]['#markup']|json_encode|raw }}
