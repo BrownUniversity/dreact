@@ -4,6 +4,4 @@
   #cover {
     stroke: ${f.colors.white};
   }
-  
-`;P.propTypes={id:l.string.isRequired,title:l.string,env:l.string},P.defaultProps={title:null,env:"prod"};var N=P;const T=JSON.parse(window.drupalCtx);delete window.drupalCtx;const M=document.querySelectorAll(`[id=${u.APP_NAME}]`),A=document.createElement("div");for(let e=0;e<M.length;e+=1)M[e].hasChildNodes()||(A.setAttribute("class","lw_dreact"),M[e].appendChild(A));a.a.render(o.a.createElement(N,T),A)}]);
-
+`;P.propTypes={id:l.string.isRequired,title:l.string,env:l.string},P.defaultProps={title:null,env:"prod"};var N=P;const T=JSON.parse(window.drupalCtx);delete window.drupalCtx;const M=document.querySelectorAll("."+u.APP_NAME),A=document.createElement("div");for(let e=0;e<M.length;e+=1)M[e].hasChildNodes()||(A.setAttribute("class","lw_dreact"),M[e].appendChild(A));const L=A;a.a.render(o.a.createElement(N,T),L)}]);
