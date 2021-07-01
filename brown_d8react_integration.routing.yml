@@ -4,6 +4,6 @@ brown_d8react_integration.admin_settings_form:
     _form: '\Drupal\brown_d8react_integration\Form\SettingsForm'
     _title: 'Site Wide DReact settings'
   requirements:
-    _permission: 'access content'
+    _permission: 'administer nodes'
   options:
     _admin_route: TRUE
