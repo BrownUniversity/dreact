@@ -3,8 +3,5 @@
   "description": "Manages react apps for insertion into sites.",
   "type": "drupal-custom-module",
   "homepage": "https://github.com/brownuniversity/dreact",
-  "minimum-stability": "dev",
-  "require": {
-    "symfony/yaml": "^3.2.8"
-  }
+  "minimum-stability": "dev"
 }
