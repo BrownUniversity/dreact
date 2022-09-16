@@ -1,11 +1,16 @@
 <div {{ attributes.addClass(content.field_react_apps['#items'].0.value) }}></div>
+{% set config = "" %}
 {% if content.field_dreact_app_config[0]['#markup'] %}
+  {% set config = content.field_dreact_app_config[0]['#markup']|json_encode|raw %}
   <script>
     window.drupalCtx = {{ content.field_dreact_app_config[0]['#markup']|json_encode|raw }}
   </script>
 {% else %}
+  {% set config = content.field_dreact_app_config[0]['#markup']|json_encode|raw %}
   <script>window.drupalCtx = {{content.field_app_config["#items"].0.value|json_encode|raw}}</script>
 {% endif %}
+
+{% dump(config) %}
 
 {% if 'On' in content.field_pass_user_data[0] %}
 {%

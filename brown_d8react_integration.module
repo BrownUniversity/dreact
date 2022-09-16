@@ -46,6 +46,9 @@ function brown_d8react_integration_theme() {
     return array(
     'paragraph__react_app' => array(
         'template' => 'paragraph--brown-d8react-integration',
+        'variables' => [
+          'noscript' => 'noscript',
+        ],  
         'base hook' => 'paragraph'
     ),
   );
@@ -54,7 +57,7 @@ function brown_d8react_integration_theme() {
 function brown_d8react_integration_page_attachments(array &$page) {
   $canOnlyEditConfig = false;
   $user = \Drupal::currentUser();
-
+t
   if ($user->hasPermission('edit react app config') && !$user->hasPermission('insert react micro-app')) {
     $canOnlyEditConfig = true;
   }
