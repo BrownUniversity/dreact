@@ -4,7 +4,7 @@
  * Contains \Drupal\module_name\Plugin\field\field_type\KeyValue.
  */
 
-namespace Drupal\brown-d8react-integration\\Plugin\field\field_type;
+ namespace Drupal\brown_d8react_integration\Plugin\field\field_type;
 
 use Drupal\field\Plugin\Type\FieldType\ConfigFieldItemBase;
 use Drupal\field\FieldInterface;
