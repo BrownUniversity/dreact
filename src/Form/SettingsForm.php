@@ -31,7 +31,7 @@ class SettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {  
     $config = $this->config('brown_d8react_integration.adminsettings');  
 
-    $current_path =  drupal_get_path('module', 'brown_d8react_integration');
+    $current_path = \Drupal::service('extension.path.resolver')->getPath('module', 'brown_d8react_integration');
     $apps = array_diff(scandir($current_path.'/apps/sitewide'), array('..', '.'));
     $options = [];
     $options['none'] = "No app selected";

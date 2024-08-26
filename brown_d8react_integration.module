@@ -19,7 +19,7 @@ use Drupal\Core\Access\AccessResult;
  * @see options_allowed_values()
  */
 function brown_d8react_integration_available_react_apps() {
-    $current_path =  drupal_get_path('module', 'brown_d8react_integration');
+    $current_path = \Drupal::service('extension.path.resolver')->getPath('module', 'brown_d8react_integration');
     $apps = array_diff(scandir($current_path.'/apps'), array('..', '.'));
     $options = [];
     foreach ($apps as $app) {
