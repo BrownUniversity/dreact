@@ -1,25 +1,30 @@
-# Brown D8React Integration
-Brown D8React Integration is a Drupal 8 module for handling the insertion of compiled react applications.
+# Brown Dreact
+Brown Dreact is a Drupal module for handling the insertion of compiled react applications.
 
 ## Installation
 
 Using Composer, Add the repository:
 
-```bash
+```json
 {
   "type": "vcs",
-  "url": "git@bitbucket.org:webserv/brown-d8react-integration.git"
+  "url": "git@bitbucket.org:BrownUniversity/dreact.git"
 }
 ```
 
 and require the module:
-```bash
+```json
 "require": {
-  "webserv/brown-d8react-integration": "dev-master"
+  "brownuniversity/dreact": "^1.0.0"
 }
 ```
 
 Run composer install, and the module will be available to be enabled via the Drupal interface.
+
+## Releases
+
+A new patch release will be automatically tagged when new code is pushed to the
+`main` branch.
 
 ## Usage
 

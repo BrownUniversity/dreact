@@ -1,7 +1,7 @@
 {
   "name": "brownuniversity/dreact",
   "description": "Manages react apps for insertion into sites.",
-  "type": "drupal-custom-module",
+  "type": "drupal-module",
   "homepage": "https://github.com/brownuniversity/dreact",
   "minimum-stability": "dev"
 }
