@@ -1,7 +1,7 @@
 name: Brown Drupal 8 React Integration
 type: module
 description: Manages React apps for insertion into sites.
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^10 || ^11
 package: Brown University
 dependencies:
   - paragraphs:paragraphs
