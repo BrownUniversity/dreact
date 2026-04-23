@@ -2,7 +2,3 @@ dreact_permissions:
   version: 1.x
   js:
     js/dreact_permissions.js: {}
-ai-bot:
-  version: 1.x
-  js:
-    apps/sitewide/ai-bot.js: { preprocess: false }
